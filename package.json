@@ -1,0 +1,21 @@
+{
+  "name": "rn-modal-nested-modal",
+  "version": "1.0.0",
+  "description": "rn modal nested modal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "modal",
+    "modal",
+    "nested",
+    "modal"
+  ],
+  "author": "Hien Nguyen",
+  "license": "ISC",
+  "devDependencies": {
+    "react-native": "*"
+  }
+}
