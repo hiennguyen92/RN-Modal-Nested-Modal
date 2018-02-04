@@ -9,13 +9,16 @@
   "keywords": [
     "react-native",
     "modal",
-    "modal",
-    "nested",
-    "modal"
+    "modal-nested-modal"
   ],
   "author": "Hien Nguyen",
   "license": "ISC",
   "devDependencies": {
-    "react-native": "*"
+    "react-native": "*",
+    "prop-types": "^15.5.10"
+  },
+  "peerDependencies": {
+    "react-native": "*",
+    "prop-types": "^15.5.10"
   }
 }

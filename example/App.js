@@ -9,8 +9,11 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View, 
+  Button
 } from 'react-native';
+
+import ModalNestedModal from './ModalNestedModal';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -20,9 +23,22 @@ const instructions = Platform.select({
 });
 
 export default class App extends Component<{}> {
+
+
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+        visible: true,
+    };
+}
+
+
   render() {
     return (
       <View style={styles.container}>
+        <ModalNestedModal alphaDim={0.5} visible={this.state.visible} canceledOnTouchOutside={true} onRequestClose={() => { this.setState({visible: !this.state.visible}) }}>
+          <View style={styles.modalContent}><Text>CCCC</Text></View>
+        </ModalNestedModal>
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
@@ -32,6 +48,33 @@ export default class App extends Component<{}> {
         <Text style={styles.instructions}>
           {instructions}
         </Text>
+        <Text style={styles.instructions}>
+          To get started, edit App.js
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit App.js
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit App.js
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit App.js
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit App.js
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit App.js
+        </Text>
+
+        <Button
+        title="Press Me"
+        onPress={() => { 
+          this.setState({visible: !this.state.visible});
+        }}
+      />
+
+        
       </View>
     );
   }
@@ -54,4 +97,16 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+
+  modalContent: {
+    elevation: 7,
+    borderRadius: 7,
+    width: 280,
+    height: 160,
+    backgroundColor: 'white',
+    paddingLeft: 23,
+    paddingTop: 30,
+    paddingRight: 22,
+    paddingBottom: 14
+  }
 });
