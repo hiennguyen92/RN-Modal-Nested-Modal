@@ -2,6 +2,12 @@
 
 Displays multiple dialog overlay for native react.
 
+## Screenshots
+
+| Android        | iOS           | 
+| ------------- |:-------------:| 
+| ![alt text](https://github.com/hiennguyen92/RN-Modal-Nested-Modal/raw/master/screenshots/Screen%20Shot%202018-02-07%20at%2011.26.44%20AM.png "Android")      | ![alt text](https://github.com/hiennguyen92/RN-Modal-Nested-Modal/raw/master/screenshots/Screen%20Shot%202018-02-07%20at%2011.26.18%20AM.png "iOS")  |
+
 ## Usage
 
 ```jsx
