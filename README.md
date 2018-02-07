@@ -37,7 +37,7 @@ class MyComponent extends Component {
             <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 20 }}>
               <TouchableOpacity 
               style={{ padding: 8 }} 
-              onPress={() => { this.setState({ visibleD: !this.state.visibleD }) }}>
+              onPress={() => { this.setState({ visible: !this.state.visible }) }}>
                 <Text style={styles.modalButtonText}>OK</Text>
               </TouchableOpacity>
             </View>
