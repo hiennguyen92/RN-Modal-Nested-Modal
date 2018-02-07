@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "react": "16.2.0",
-    "react-native": "0.52.2"
+    "react-native": "0.52.2",
+    "rn-modal-nested-modal": "git+https://github.com/hiennguyen92/RN-Modal-Nested-Modal.git"
   },
   "devDependencies": {
     "babel-jest": "22.1.0",

@@ -8,17 +8,21 @@ export default class ModalNestedModal extends Component {
         ...View.propTypes,
         colorDim: PropTypes.string,
         alphaDim: PropTypes.number,
+        zIndex: PropTypes.number,
+        isTop: PropTypes.bool,
         visible: PropTypes.bool,
         onRequestClose: PropTypes.func,
-        canceledOnTouchOutside: PropTypes.bool
+        onTouchOutside: PropTypes.func
     };
 
     static defaultProps = {
         colorDim: 'rgb(0, 0, 0)',
-        alphaDim: 0.9,
+        alphaDim: 0.5,
+        zIndex: 1,
+        isTop: false,
         visible: true,
         onRequestClose: () => {},
-        canceledOnTouchOutside: true
+        onTouchOutside: () => {}
     };
 
 
@@ -26,26 +30,28 @@ export default class ModalNestedModal extends Component {
         super(props, context);
         this.state = {
             visible: this.props.visible,
+            zIndex: this.props.zIndex,
+            isTop: this.props.isTop
         };
     }
 
     componentWillReceiveProps(nextProps) {
+        if(this.state.visible && !nextProps.visible){
+            this.props.onRequestClose();
+        }
         this.setState({visible: nextProps.visible})
       }
 
 
     render() {
-        return (this.state.visible ? <View style={[styles.parent]}>
-                <TouchableWithoutFeedback style={styles.parent}
+        return (this.state.visible ? <View style={[styles.parent, {zIndex: this.state.isTop ? Number.MAX_SAFE_INTEGER : this.state.zIndex}]}>
+                <TouchableWithoutFeedback style={[styles.parent, {zIndex: this.state.isTop ? Number.MAX_SAFE_INTEGER : this.state.zIndex}]}
                     onPress={() => { 
-                        if(this.props.canceledOnTouchOutside){
-                            this.setState({visible: !this.state.visible})
-                            this.props.onRequestClose();
-                        }
+                        this.props.onTouchOutside();
                     }}>
-                    <View style={[styles.parent, { opacity: this.props.alphaDim, backgroundColor: this.props.colorDim}]}/>
-                    </TouchableWithoutFeedback>
-                {this.props.children}
+                    <View style={[styles.bgBlack, { opacity: this.props.alphaDim, backgroundColor: this.props.colorDim}]}/>
+                </TouchableWithoutFeedback>
+                <View style={{zIndex: this.state.isTop ? Number.MAX_SAFE_INTEGER : this.state.zIndex}}>{this.props.children}</View>
             </View> : null);
     }
 }
@@ -56,6 +62,16 @@ var styles = StyleSheet.create({
         flex: 1,
         position: 'absolute',
         zIndex: 1,
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
+        alignItems:'center',
+        justifyContent:'center'
+    },
+    bgBlack: {
+        flex: 1,
+        position: 'absolute',
         left: 0,
         top: 0,
         right: 0,
